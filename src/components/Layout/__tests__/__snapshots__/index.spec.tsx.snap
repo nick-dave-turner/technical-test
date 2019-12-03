@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component should match snapshot 1`] = `
+<Fragment>
+  <Header />
+  <styled.div>
+    <styled.div>
+      <h1>
+        Hello World
+      </h1>
+    </styled.div>
+  </styled.div>
+  <Footer />
+</Fragment>
+`;

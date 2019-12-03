@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TradeForm component When required props are complete should match snapshot 1`] = `
+<Widget
+  title="Submit Trade"
+>
+  <form>
+    <styled.div>
+      <styled.select
+        name="stockSymbol"
+        placeholder="Stock"
+      >
+        <option>
+          Choose Stock
+        </option>
+        <option
+          key="1"
+          value="TEA"
+        >
+          TEA
+        </option>
+        <option
+          key="2"
+          value="POP"
+        >
+          POP
+        </option>
+      </styled.select>
+    </styled.div>
+    <styled.div>
+      <styled.input
+        name="price"
+        placeholder="Price"
+        type="number"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.input
+        name="quantity"
+        placeholder="Quantity"
+        type="number"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.button
+        name="submit-button"
+        type="button"
+      >
+        Submit trade
+      </styled.button>
+    </styled.div>
+  </form>
+</Widget>
+`;
+
+exports[`TradeForm component When required props are empty should match snapshot 1`] = `
+<Widget
+  title="Submit Trade"
+>
+  <form>
+    <styled.div>
+      <styled.select
+        name="stockSymbol"
+        placeholder="Stock"
+      >
+        <option>
+          Choose Stock
+        </option>
+      </styled.select>
+    </styled.div>
+    <styled.div>
+      <styled.input
+        name="price"
+        placeholder="Price"
+        type="number"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.input
+        name="quantity"
+        placeholder="Quantity"
+        type="number"
+      />
+    </styled.div>
+    <styled.div>
+      <styled.button
+        name="submit-button"
+        type="button"
+      >
+        Submit trade
+      </styled.button>
+    </styled.div>
+  </form>
+</Widget>
+`;

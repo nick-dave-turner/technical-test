@@ -1,3 +1,18 @@
+# Technical Assessment
+
+“Stock Trades” is a simplified single page application that allows users to enter trades via the “Submit Trade” form.  
+All trades should be then be displayed in the “Recent Trades” table.
+
+The bulk of the application UI has already built; your job is to make the form talk to the table…
+
+## Requirements:
+
+1. When submitting the “Stock Trades” form, is the response recorded along with the date of the trade?
+2. Does the “Recent Trades” table display all of the trades that have been recorded?
+3. Is the list of Recent Trades displayed in date order - most recent trade first?
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

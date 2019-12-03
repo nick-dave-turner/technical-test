@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Widget component When Widget title not present should match snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.h4>
+      TESTING
+    </styled.h4>
+  </styled.div>
+  <styled.div
+    title="TESTING"
+  >
+    <h1>
+      Hello World
+    </h1>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Widget component When Widget title present should match snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    <h1>
+      Hello World
+    </h1>
+  </styled.div>
+</styled.div>
+`;

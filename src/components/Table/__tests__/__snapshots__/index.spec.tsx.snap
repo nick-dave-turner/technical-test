@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table component When required props are complete should match snapshot 1`] = `
+<styled.table>
+  <thead>
+    <tr>
+      <Styled(styled.td)
+        key="0"
+      >
+        Test Column 1
+      </Styled(styled.td)>
+      <Styled(styled.td)
+        key="1"
+      >
+        Test Column 2
+      </Styled(styled.td)>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="0"
+    >
+      <styled.td
+        key="0"
+      >
+        Row 1 Column 1
+      </styled.td>
+      <styled.td
+        key="1"
+      >
+        Row 1 Column 2
+      </styled.td>
+    </tr>
+    <tr
+      key="1"
+    >
+      <styled.td
+        key="0"
+      >
+        Row 2 Column 1
+      </styled.td>
+      <styled.td
+        key="1"
+      >
+        Row 2 Column 2
+      </styled.td>
+    </tr>
+  </tbody>
+</styled.table>
+`;
+
+exports[`Table component When required props are empty should match snapshot 1`] = `
+<styled.table>
+  <thead>
+    <tr />
+  </thead>
+  <tbody>
+    <tr>
+      <styled.td
+        colSpan={0}
+      >
+        <styled.p>
+          You currently have no entries to display.
+        </styled.p>
+      </styled.td>
+    </tr>
+  </tbody>
+</styled.table>
+`;
