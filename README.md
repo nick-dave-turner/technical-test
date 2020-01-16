@@ -1,7 +1,8 @@
 # Technical Assessment
 
-“Stock Trades” is a simplified single page application that allows users to enter trades via the “Submit Trade” form.  
-All trades should be then be displayed in the “Recent Trades” table.
+“Stock Trades” is a simplified single page application that allows users to enter a single trade via a “Submit Trade” form present in the UI.
+
+Any trades submitted should be displayed in the “Recent Trades” table also present in the UI.
 
 The bulk of the application UI has already built; your job is to make the form talk to the table…
 
@@ -10,6 +11,12 @@ The bulk of the application UI has already built; your job is to make the form t
 1. When submitting the “Stock Trades” form, is the response recorded along with the date of the trade?
 2. Does the “Recent Trades” table display all of the trades that have been recorded?
 3. Is the list of Recent Trades displayed in date order - most recent trade first?
+
+## Other considerations:
+
+This application has been created using `TypeScript`. Although TypeScript knowledge is preferable, it does not form an essential part of the assessment.
+
+You can turn type checking off by adding `// @ts-nocheck` to the top of any files added or modified.
 
 ---
 

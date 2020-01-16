@@ -42,16 +42,31 @@ const Button = styled.button`
   }
 `;
 
-type TradeFormProps = {
-  symbols: Array<IStockSymbol>;
+type ITrade = {
+  stockSymbol: string | null;
+  price: number | null;
+  quantity: number | null;
 };
 
-const TradeForm: React.FC<TradeFormProps> = ({ symbols }) => {
+type TradeFormProps = {
+  symbols: Array<IStockSymbol>;
+  onSubmit: ({ stockSymbol, price, quantity }: ITrade) => void;
+};
+
+const TradeForm: React.FC<TradeFormProps> = ({ symbols, onSubmit }) => {
+  const [stockSymbol, updateStockSymbol] = React.useState<string | null>(null);
+  const [price, updatePrice] = React.useState<number | null>(null);
+  const [quantity, updateQuantity] = React.useState<number | null>(null);
+
   return (
     <Widget title="Submit Trade">
       <form>
         <FormRow>
-          <Select placeholder="Stock" name="stockSymbol">
+          <Select
+            placeholder="Stock"
+            name="stockSymbol"
+            onChange={val => updateStockSymbol(val.target.value)}
+          >
             <option>Choose Stock</option>
             {symbols.map((symbol: IStockSymbol) => {
               return (
@@ -63,13 +78,33 @@ const TradeForm: React.FC<TradeFormProps> = ({ symbols }) => {
           </Select>
         </FormRow>
         <FormRow>
-          <Input placeholder="Price" name="price" type="number" />
+          <Input
+            placeholder="Price"
+            name="price"
+            type="number"
+            onChange={val => updatePrice(Number(val.target.value))}
+          />
         </FormRow>
         <FormRow>
-          <Input placeholder="Quantity" name="quantity" type="number" />
+          <Input
+            placeholder="Quantity"
+            name="quantity"
+            type="number"
+            onChange={val => updateQuantity(Number(val.target.value))}
+          />
         </FormRow>
         <FormRow>
-          <Button type="button" name="submit-button">
+          <Button
+            type="button"
+            name="submit-button"
+            onClick={() =>
+              onSubmit({
+                stockSymbol,
+                price,
+                quantity
+              })
+            }
+          >
             Submit trade
           </Button>
         </FormRow>

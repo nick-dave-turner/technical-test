@@ -30,18 +30,34 @@ const TradesTableContainer = styled.section`
   grid-area: tradesTable;
 `;
 
-const TRADES_DATA: Array<ITrade> = [];
-
 const Home: React.FC = () => {
   const { stockSymbols } = useStockSymbols();
+  const [trades, updateTrades] = React.useState<Array<ITrade>>([]);
+
+  const handleFormSubmit = (trade: any): void => {
+    updateTrades(() => [...trades, { timestamp: new Date(), ...trade }]);
+  };
+
+  const formatTrades = (trades: Array<ITrade>): Array<ITrade> => {
+    return trades
+      .sort((a: ITrade, b: ITrade) => b.timestamp - a.timestamp)
+      .map((trade: ITrade) => {
+        return {
+          timestamp: trade.timestamp.toLocaleString(),
+          stockSymbol: trade.stockSymbol,
+          price: trade.price,
+          quantity: trade.quantity
+        };
+      });
+  };
 
   return (
     <Grid>
       <SideBar>
-        <TradeForm symbols={stockSymbols} />
+        <TradeForm symbols={stockSymbols} onSubmit={handleFormSubmit} />
       </SideBar>
       <TradesTableContainer>
-        <TradesTable rowData={TRADES_DATA} />
+        <TradesTable rowData={formatTrades(trades)} />
       </TradesTableContainer>
     </Grid>
   );
