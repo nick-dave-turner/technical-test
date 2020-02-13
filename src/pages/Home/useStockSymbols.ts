@@ -7,6 +7,7 @@ const useStockSymbols = () => {
     Array<IStockSymbol>
   >([]);
 
+  // Simulate loading of stocks from an API.
   useEffect(() => {
     getStockSymbols()
       .then((result: Array<IStockSymbol>) => updateStockSymbols(result))
