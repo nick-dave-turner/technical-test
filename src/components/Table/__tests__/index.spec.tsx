@@ -3,30 +3,46 @@ import { shallow } from "enzyme";
 
 import Table from "../";
 
-const colDefs = ["Test Column 1", "Test Column 2"];
-
-const rowData = [
+const columns = [
   {
-    col1: "Row 1 Column 1",
-    col2: "Row 1 Column 2"
+    Header: "Stock",
+    accessor: "stockSymbol"
   },
   {
-    col1: "Row 2 Column 1",
-    col2: "Row 2 Column 2"
+    Header: "Price",
+    accessor: "price"
+  },
+  {
+    Header: "No. Shares Purchased",
+    accessor: "quantity"
+  },
+
+  {
+    Header: "Transaction Date",
+    accessor: "timestamp"
+  }
+];
+
+const data = [
+  {
+    stockSymbol: "stockSymbol",
+    price: 100,
+    quantity: 2000,
+    timestamp: "09/03/2020"
   }
 ];
 
 describe("Table component", () => {
   describe("When required props are empty", () => {
     it("should match snapshot", () => {
-      const component = shallow(<Table colDefs={[]} rowData={[]} />);
+      const component = shallow(<Table columns={[]} data={[]} />);
       expect(component).toMatchSnapshot();
     });
   });
 
   describe("When required props are complete", () => {
     it("should match snapshot", () => {
-      const component = shallow(<Table colDefs={colDefs} rowData={rowData} />);
+      const component = shallow(<Table columns={columns} data={data} />);
       expect(component).toMatchSnapshot();
     });
   });

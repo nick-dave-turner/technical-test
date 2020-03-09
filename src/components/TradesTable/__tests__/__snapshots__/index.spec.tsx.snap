@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TradesTable component When required props are complete should match snapshot 1`] = `
+<Widget
+  title="Recent Trades"
+>
+  <Table
+    columns={
+      Array [
+        Object {
+          "Header": "Stock",
+          "accessor": "stockSymbol",
+        },
+        Object {
+          "Header": "Price",
+          "accessor": "price",
+        },
+        Object {
+          "Header": "No. Shares Purchased",
+          "accessor": "quantity",
+        },
+        Object {
+          "Header": "Transaction Date",
+          "accessor": "timestamp",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "price": 100,
+          "quantity": 2000,
+          "stockSymbol": "stockSymbol",
+          "timestamp": "09/03/2020",
+        },
+      ]
+    }
+  />
+</Widget>
+`;
+
+exports[`TradesTable component When required props are empty should match snapshot 1`] = `
+<Widget
+  title="Recent Trades"
+>
+  <Table
+    columns={
+      Array [
+        Object {
+          "Header": "Stock",
+          "accessor": "stockSymbol",
+        },
+        Object {
+          "Header": "Price",
+          "accessor": "price",
+        },
+        Object {
+          "Header": "No. Shares Purchased",
+          "accessor": "quantity",
+        },
+        Object {
+          "Header": "Transaction Date",
+          "accessor": "timestamp",
+        },
+      ]
+    }
+    data={Array []}
+  />
+</Widget>
+`;

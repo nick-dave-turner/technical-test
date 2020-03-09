@@ -9,5 +9,5 @@ interface ITrade {
   stockSymbol: string;
   price: number;
   quantity: number;
-  timestamp: any;
+  timestamp: string;
 }

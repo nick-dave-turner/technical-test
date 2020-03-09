@@ -8,18 +8,36 @@ type TradesTableProps = {
 };
 
 const TradesTable: React.FC<TradesTableProps> = ({ rowData }) => {
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Stock",
+        accessor: "stockSymbol"
+      },
+      {
+        Header: "Price",
+        accessor: "price"
+      },
+      {
+        Header: "No. Shares Purchased",
+        accessor: "quantity"
+      },
+
+      {
+        Header: "Transaction Date",
+        accessor: "timestamp"
+      }
+    ],
+    []
+  );
+
+  const data = React.useMemo(() => rowData, [rowData]);
+
   return (
     <Widget title="Recent Trades">
-      <Table colDefs={COL_DEFS} rowData={rowData} />
+      <Table columns={columns} data={data} />
     </Widget>
   );
 };
-
-const COL_DEFS: Array<string> = [
-  "Transaction Date",
-  "Stock",
-  "Price",
-  "No. Shares Purchased"
-];
 
 export default TradesTable;

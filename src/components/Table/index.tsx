@@ -1,24 +1,27 @@
 import React from "react";
 import styled from "styled-components";
+import { useTable } from "react-table";
 
-const StyledTable = styled.table`
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: collapse;
-  border-bottom: 2px solid #ddd;
-`;
+const StyledTable = styled.div`
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-bottom: 2px solid #ddd;
 
-const Td = styled.td`
-  padding: 0.625rem;
-  border: 1px solid #ddd;
-  background: white;
-`;
+    th {
+      padding: 0.625rem;
+      text-align: left;
+      font-weight: bold;
+      background: #ededed;
+    }
 
-const Th = styled(Td)`
-  padding: 0.625rem;
-  text-align: left;
-  font-weight: bold;
-  background: #ededed;
+    td {
+      padding: 0.625rem;
+      border: 1px solid #ddd;
+      background: white;
+    }
+  }
 `;
 
 const NoData = styled.p`
@@ -27,44 +30,58 @@ const NoData = styled.p`
 `;
 
 type TableProps = {
-  colDefs: Array<string>;
-  rowData: Array<any>;
+  columns: Array<any>;
+  data: Array<any>;
 };
 
-const Table: React.FC<TableProps> = ({ colDefs, rowData }) => {
+const Table: React.FC<TableProps> = ({ columns = [], data = [] }) => {
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow
+  } = useTable({
+    columns,
+    data
+  });
+
   return (
     <StyledTable>
-      <thead>
-        <tr>
-          {colDefs.map((col, index) => (
-            <Th key={index}>{col}</Th>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              ))}
+            </tr>
           ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rowData.length === 0 && (
-          <tr>
-            <Td colSpan={colDefs.length}>
-              <NoData>You currently have no entries to display.</NoData>
-            </Td>
-          </tr>
-        )}
-
-        {rowData.map((row, index) => (
-          <tr key={index}>
-            {Object.keys(row).map((item, index) => (
-              <Td key={index}>{row[item]}</Td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => {
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+          {!rows.length && (
+            <tr>
+              <td colSpan={columns.length}>
+                <NoData>You currently have no entries to display.</NoData>
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </StyledTable>
   );
-};
-
-Table.defaultProps = {
-  colDefs: [],
-  rowData: []
 };
 
 export default Table;

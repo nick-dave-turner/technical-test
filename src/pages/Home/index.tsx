@@ -28,10 +28,10 @@ const TradesTableContainer = styled.section`
   grid-area: tradesTable;
 `;
 
-const TRADES_DATA: Array<ITrade> = [];
-
 const Home: React.FC = () => {
   const { stockSymbols } = useStockSymbols();
+
+  const TRADES_DATA: Array<ITrade> = [];
 
   return (
     <Grid>
